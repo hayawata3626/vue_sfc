@@ -1,11 +1,15 @@
-<template>
-  <p>Hello, {{ name }}</p>
+<template lang="pug">
+  .list
+    p.list_item {{name}}
 </template>
 
-<style scoped>
-p {
+<style lang="scss">
+.list {
    color: #323232;
    font-weight: 700;
+   &_item {
+     display: flex;
+   }
  }
 </style>
 
