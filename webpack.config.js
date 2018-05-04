@@ -1,10 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -12,6 +14,18 @@ module.exports = {
         test: /\.vue$/,
         exclude: /node_modules/,
         loader: 'vue-loader',
+        options: {
+          esModule: true
+        }
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          transpileOnly: true,
+          appendTsSuffixTo: [/\.vue$/]
+        }
       },
       {
         test: /\.css$/,
@@ -26,7 +40,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json', 'scss'],
+    extensions: ['*', '.ts', '.vue', '.json', 'scss', '.js'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
