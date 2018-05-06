@@ -3,7 +3,7 @@
     p.list_item Hello {{name}}
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .list {
     color: #323232;
     font-weight: 700;

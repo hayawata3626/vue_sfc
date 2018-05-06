@@ -13,7 +13,10 @@ module.exports = {
       {
         test: /\.vue$/,
         exclude: /node_modules/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          esModule: true
+        }
       },
       {
         test: /\.ts$/,
@@ -23,11 +26,6 @@ module.exports = {
           transpileOnly: true,
           appendTsSuffixTo: [/\.vue$/]
         }
-      },
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        loader: ['style-loader', 'css-loader'],
       },
       {
         test: /\.js$/,
